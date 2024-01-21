@@ -5,7 +5,7 @@ const generateMarkdown = require("./utils/generateMarkdown");
 const util = require("util");
 const writeFileAsync = util.promisify(fs.writeFile);
 
-// array of questions for user and function to initialise program
+// Arrow function to generate questions using enquirer.prompt
 const generateQuestions = () =>
   inquirer.prompt([
     {
@@ -61,14 +61,15 @@ const generateQuestions = () =>
     },
   ]);
 
+  //Function for async/await syntax to make application run smoother 
 const init = async () => {
   try {
     const data = await generateQuestions();
     await writeFileAsync("README.md", generateMarkdown(data));
     console.log("Successfully wrote to README.md");
   } catch (err) {
-    console.error("Error writing to README.md:", err);
-    process.exit(1);
+    console.error("Error writing to README.md:", err); //if there is any errors 
+    process.exit(1); //exit if there is errors
   }
 }
 
