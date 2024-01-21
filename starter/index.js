@@ -36,7 +36,7 @@ const generateQuestions = () =>
         "MIT",
         "ISC",
         "Apache License 2.0",
-        "GNU General Public Licence",
+        "GNU General Public License",
       ],
     },
     {
@@ -61,11 +61,16 @@ const generateQuestions = () =>
     },
   ]);
 
-// function call to initialize program
-generateQuestions()
-  // function to write README file
-  .then((data) =>
-    writeFileAsync("README.md", generateMarkdown(data))
-      .then(() => console.log("Successfully wrote to README.md"))
-      .catch((err) => console.error(err))
-  );
+const init = async () => {
+  try {
+    const data = await generateQuestions();
+    await writeFileAsync("README.md", generateMarkdown(data));
+    console.log("Successfully wrote to README.md");
+  } catch (err) {
+    console.error("Error writing to README.md:", err);
+    process.exit(1);
+  }
+}
+
+// Call the function
+init();
