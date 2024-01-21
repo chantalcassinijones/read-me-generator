@@ -50,5 +50,5 @@ I read the following documentation to help me complete this challenge:
 
 ##  Link to video 
 
- [To see how the application works](https://www.w3schools.com/js/js_function_parameters.asp)
+ [To see how the application works](https://drive.google.com/file/d/16EZBx69s77VOxRSCQca4F6rj-gQjOZld/view)
 
