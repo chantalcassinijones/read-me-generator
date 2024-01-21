@@ -1,26 +1,23 @@
 // function to generate markdown for README
-function generateMarkdown(data) {
-  //console.log("Received data in generateMarkdown:", data);
+const generateMarkdown = (data) => {
   return `# ${data.title}
-  ## Description \n\n ${data.description}
-  ## Table of Contents: 
-   - [Installation](#installation)
-   - [Usage](#usage)
-   - [License](#license)
-  ## Installation \n\n ${data.installation}
-  ## Usage \n\n ${data.usage}
-  ## License \n\n ${generateBadge(data)}
-  ## Contributing \n\n ${data.contribution}
-  ## Tests \n\n ${data.tests}
-  ## Questions \n\n ${data.github} ${data.email}
-
-
-`;
-}
+ ## Description \n ${data.description}
+ ## Table of Contents: 
+ - [Installation](#installation)
+ - [Usage](#usage)
+ - [License](#license)
+ ## Installation \n ${data.installation}
+ ## Usage \n ${data.usage}
+ ## License \n ${generateBadge(data)}
+ ## Contributing \n ${data.contribution}
+ ## Tests \n ${data.tests}
+ ## Questions \n ${data.github} ${data.email}
+ `;
+};
 
 module.exports = generateMarkdown;
 
-function generateBadge(data) {
+const generateBadge = (data) => {
   //console.log("Received data in generateBadge:",data);
   if (!data || !data.license) {
     return "No license information provided";
@@ -58,4 +55,4 @@ function generateBadge(data) {
   }
 
   return `${licenseBadge}\n\n**NOTICE:**\n${licenseNotice}`;
-}
+};
