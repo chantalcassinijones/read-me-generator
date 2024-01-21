@@ -1,4 +1,4 @@
-// function to generate markdown for README
+// function to generate markdown 
 const generateMarkdown = (data) => {
   return `# ${data.title}
  ## Description \n ${data.description}
@@ -8,23 +8,26 @@ const generateMarkdown = (data) => {
  - [License](#license)
  ## Installation \n ${data.installation}
  ## Usage \n ${data.usage}
- ## License \n ${generateBadge(data)}
+ ## License \n ${generateBadgeandNotice(data)}
  ## Contributing \n ${data.contribution}
  ## Tests \n ${data.tests}
- ## Questions \n ${data.github} ${data.email}
+ ## Questions \n My GitHub: ${data.github} \n If you have any further questions or need assistance, feel free to reach out to me at: ${data.email} 
  `;
 };
 
 module.exports = generateMarkdown;
 
-const generateBadge = (data) => {
-  //console.log("Received data in generateBadge:",data);
+//Function to generate badge and notice for license section
+const generateBadgeandNotice = (data) => {
+  //if statement in case no information is provided" 
   if (!data || !data.license) {
     return "No license information provided";
   }
+  //initialising variables
   const license = data.license;
   let licenseBadge = " ";
   let licenseNotice = " ";
+  //switch statement to decide which license badge and notice to use depending on user input
   switch (license) {
     case "MIT":
       licenseBadge =
@@ -53,6 +56,6 @@ const generateBadge = (data) => {
     default:
       return "Invalid license information provided";
   }
-
+ //Display license badge and notice 
   return `${licenseBadge}\n\n**NOTICE:**\n${licenseNotice}`;
 };
